@@ -1,0 +1,335 @@
+--------------------------------------------------------
+--  File created - poniedziałek-wrzesień-07-2020   
+--------------------------------------------------------
+DROP TABLE "STUDENT"."KLIENCI" cascade constraints;
+DROP TABLE "STUDENT"."PRODUCENCI" cascade constraints;
+DROP TABLE "STUDENT"."PRODUKT" cascade constraints;
+DROP TABLE "STUDENT"."RODZAJE" cascade constraints;
+DROP SEQUENCE "STUDENT"."KLIENCI_SEQ";
+DROP SEQUENCE "STUDENT"."PRODUCENCI_SEQ";
+DROP SEQUENCE "STUDENT"."PRODUKT_SEQ";
+DROP SEQUENCE "STUDENT"."RODZAJE_SEQ";
+DROP PROCEDURE "STUDENT"."DODAJ";
+DROP PROCEDURE "STUDENT"."DODAJ2";
+DROP PROCEDURE "STUDENT"."DODAJPRODUCENTA";
+DROP PROCEDURE "STUDENT"."DODAJPRODUKT";
+DROP PROCEDURE "STUDENT"."DODAJRODZAJ";
+DROP PROCEDURE "STUDENT"."LOGUJ";
+DROP PROCEDURE "STUDENT"."REJESTRUJ";
+--------------------------------------------------------
+--  DDL for Sequence KLIENCI_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "STUDENT"."KLIENCI_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 7 NOCACHE  NOORDER  NOCYCLE  NOPARTITION ;
+--------------------------------------------------------
+--  DDL for Sequence PRODUCENCI_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "STUDENT"."PRODUCENCI_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 10 NOCACHE  NOORDER  NOCYCLE  NOPARTITION ;
+--------------------------------------------------------
+--  DDL for Sequence PRODUKT_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "STUDENT"."PRODUKT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOPARTITION ;
+--------------------------------------------------------
+--  DDL for Sequence RODZAJE_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "STUDENT"."RODZAJE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 6 NOCACHE  NOORDER  NOCYCLE  NOPARTITION ;
+--------------------------------------------------------
+--  DDL for Table KLIENCI
+--------------------------------------------------------
+
+  CREATE TABLE "STUDENT"."KLIENCI" 
+   (	"ID_KLIENTA" NUMBER(10,0), 
+	"IMIE" VARCHAR2(1000 CHAR), 
+	"NAZWISKO" VARCHAR2(1000 CHAR), 
+	"ADRES" VARCHAR2(1000 CHAR), 
+	"NAZWA_UZYTKOWNIKA" VARCHAR2(1000 CHAR), 
+	"HASLO" VARCHAR2(1000 CHAR), 
+	"EMAIL" VARCHAR2(1000 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K" ;
+--------------------------------------------------------
+--  DDL for Table PRODUCENCI
+--------------------------------------------------------
+
+  CREATE TABLE "STUDENT"."PRODUCENCI" 
+   (	"ID_PRODUCENTA" NUMBER(10,0), 
+	"NAZWAPRODUCENTA" VARCHAR2(1000 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K" ;
+--------------------------------------------------------
+--  DDL for Table PRODUKT
+--------------------------------------------------------
+
+  CREATE TABLE "STUDENT"."PRODUKT" 
+   (	"ID_PRODUKTU" NUMBER(10,0), 
+	"MODEL" VARCHAR2(1000 CHAR), 
+	"ID_PRODUCENTA" NUMBER(10,0), 
+	"ID_RODZAJU" NUMBER(10,0), 
+	"ROK" VARCHAR2(1000 CHAR), 
+	"CENA" NUMBER, 
+	"IMG" VARCHAR2(1000 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K" ;
+--------------------------------------------------------
+--  DDL for Table RODZAJE
+--------------------------------------------------------
+
+  CREATE TABLE "STUDENT"."RODZAJE" 
+   (	"ID_RODZAJU" NUMBER(10,0), 
+	"NAZWARODZAJU" VARCHAR2(1000 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K" ;
+REM INSERTING into STUDENT.KLIENCI
+SET DEFINE OFF;
+Insert into STUDENT.KLIENCI (ID_KLIENTA,IMIE,NAZWISKO,ADRES,NAZWA_UZYTKOWNIKA,HASLO,EMAIL) values ('3','pawel','kulpinski','test','test','test111','test@wp.pl');
+Insert into STUDENT.KLIENCI (ID_KLIENTA,IMIE,NAZWISKO,ADRES,NAZWA_UZYTKOWNIKA,HASLO,EMAIL) values ('4','Jan','Kowalski','Gdynia','Jan123','123456','jan.kowalski@wp.pl');
+Insert into STUDENT.KLIENCI (ID_KLIENTA,IMIE,NAZWISKO,ADRES,NAZWA_UZYTKOWNIKA,HASLO,EMAIL) values ('5','Jan','Kowalski','Gdynia','Jan1234','1234567','janek@wp.pl');
+Insert into STUDENT.KLIENCI (ID_KLIENTA,IMIE,NAZWISKO,ADRES,NAZWA_UZYTKOWNIKA,HASLO,EMAIL) values ('6','Jan','Kowalski','Gdynia','Jan4567','123456','janek@wp.pl');
+Insert into STUDENT.KLIENCI (ID_KLIENTA,IMIE,NAZWISKO,ADRES,NAZWA_UZYTKOWNIKA,HASLO,EMAIL) values ('1','imie','naziwsko','hetmaA„ska 16/3','nazw','haseleczko','mail@wp.pl');
+REM INSERTING into STUDENT.PRODUCENCI
+SET DEFINE OFF;
+Insert into STUDENT.PRODUCENCI (ID_PRODUCENTA,NAZWAPRODUCENTA) values ('1','Apple');
+Insert into STUDENT.PRODUCENCI (ID_PRODUCENTA,NAZWAPRODUCENTA) values ('6','Sony');
+Insert into STUDENT.PRODUCENCI (ID_PRODUCENTA,NAZWAPRODUCENTA) values ('2','Samsung');
+REM INSERTING into STUDENT.PRODUKT
+SET DEFINE OFF;
+Insert into STUDENT.PRODUKT (ID_PRODUKTU,MODEL,ID_PRODUCENTA,ID_RODZAJU,ROK,CENA,IMG) values ('5','Galaxy S7','2','1','2015','1499','product4.png');
+Insert into STUDENT.PRODUKT (ID_PRODUKTU,MODEL,ID_PRODUCENTA,ID_RODZAJU,ROK,CENA,IMG) values ('7','MDRX650','6','4','2016','299','product2.png');
+Insert into STUDENT.PRODUKT (ID_PRODUKTU,MODEL,ID_PRODUCENTA,ID_RODZAJU,ROK,CENA,IMG) values ('1','SE 2020','1','1','1234','2099','product5.png');
+Insert into STUDENT.PRODUKT (ID_PRODUKTU,MODEL,ID_PRODUCENTA,ID_RODZAJU,ROK,CENA,IMG) values ('4','E2','1','2','1223','2199','product3.png');
+Insert into STUDENT.PRODUKT (ID_PRODUKTU,MODEL,ID_PRODUCENTA,ID_RODZAJU,ROK,CENA,IMG) values ('9','Macbook','1','2','2016','3599','product1.png');
+REM INSERTING into STUDENT.RODZAJE
+SET DEFINE OFF;
+Insert into STUDENT.RODZAJE (ID_RODZAJU,NAZWARODZAJU) values ('1','Smartfon');
+Insert into STUDENT.RODZAJE (ID_RODZAJU,NAZWARODZAJU) values ('2','Laptop');
+Insert into STUDENT.RODZAJE (ID_RODZAJU,NAZWARODZAJU) values ('3','Tablet');
+Insert into STUDENT.RODZAJE (ID_RODZAJU,NAZWARODZAJU) values ('5','nowy');
+Insert into STUDENT.RODZAJE (ID_RODZAJU,NAZWARODZAJU) values ('4','Sluchawki');
+--------------------------------------------------------
+--  Constraints for Table RODZAJE
+--------------------------------------------------------
+
+  ALTER TABLE "STUDENT"."RODZAJE" ADD PRIMARY KEY ("ID_RODZAJU")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table KLIENCI
+--------------------------------------------------------
+
+  ALTER TABLE "STUDENT"."KLIENCI" ADD PRIMARY KEY ("ID_KLIENTA")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PRODUKT
+--------------------------------------------------------
+
+  ALTER TABLE "STUDENT"."PRODUKT" ADD PRIMARY KEY ("ID_PRODUKTU")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PRODUCENCI
+--------------------------------------------------------
+
+  ALTER TABLE "STUDENT"."PRODUCENCI" ADD PRIMARY KEY ("ID_PRODUCENTA")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TMP_2K"  ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger KLIENCI_BI
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "STUDENT"."KLIENCI_BI" 
+  BEFORE INSERT ON "KLIENCI"
+  FOR EACH ROW
+BEGIN
+  IF :NEW."ID_KLIENTA" IS NULL THEN
+    SELECT "KLIENCI_SEQ".NEXTVAL INTO :NEW."ID_KLIENTA" FROM DUAL;
+  END IF;
+END;
+/
+ALTER TRIGGER "STUDENT"."KLIENCI_BI" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger PRODUCENCI_BI
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "STUDENT"."PRODUCENCI_BI" 
+  BEFORE INSERT ON "PRODUCENCI"
+  FOR EACH ROW
+BEGIN
+  IF :NEW."ID_PRODUCENTA" IS NULL THEN
+    SELECT "PRODUCENCI_SEQ".NEXTVAL INTO :NEW."ID_PRODUCENTA" FROM DUAL;
+  END IF;
+END;
+/
+ALTER TRIGGER "STUDENT"."PRODUCENCI_BI" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger PRODUKT_BI
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "STUDENT"."PRODUKT_BI" 
+  BEFORE INSERT ON "PRODUKT"
+  FOR EACH ROW
+BEGIN
+  IF :NEW."ID_PRODUKTU" IS NULL THEN
+    SELECT "PRODUKT_SEQ".NEXTVAL INTO :NEW."ID_PRODUKTU" FROM DUAL;
+  END IF;
+END;
+/
+ALTER TRIGGER "STUDENT"."PRODUKT_BI" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger RODZAJE_BI
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "STUDENT"."RODZAJE_BI" 
+  BEFORE INSERT ON "RODZAJE"
+  FOR EACH ROW
+BEGIN
+  IF :NEW."ID_RODZAJU" IS NULL THEN
+    SELECT "RODZAJE_SEQ".NEXTVAL INTO :NEW."ID_RODZAJU" FROM DUAL;
+  END IF;
+END;
+/
+ALTER TRIGGER "STUDENT"."RODZAJE_BI" ENABLE;
+--------------------------------------------------------
+--  DDL for Procedure DODAJ
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "STUDENT"."DODAJ" (imie1 varchar, nazwisko1 varchar, miasto1 varchar)
+is
+begin
+UPDATE studenci
+SET miasto = miasto1
+WHERE imie = imie1
+AND nazwisko =nazwisko1;
+If SQL%NOTFOUND THEN
+INSERT INTO studenci (student_id, imie, nazwisko, miasto)
+VALUES ((select max(student_Id) from studenci)+10, imie1, nazwisko1, miasto1);
+END IF;
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure DODAJ2
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "STUDENT"."DODAJ2" (nazwa1 in varchar2, opis1 in varchar2, rodzaj1 in varchar2, ects1 in number) 
+is 
+begin
+insert into przedmioty (przedmiot_id, nazwa, opis, rodzaj, ects) values (((select max(przedmiot_id)from przedmioty)+1),nazwa1, opis1, rodzaj1, ects1);
+end;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure DODAJPRODUCENTA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "STUDENT"."DODAJPRODUCENTA" (
+  nazwaProducenta in varchar2)
+  IS
+  BEGIN
+    INSERT INTO producenci VALUES (
+   producenci_seq.nextval, nazwaProducenta);
+  END dodajproducenta;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure DODAJPRODUKT
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "STUDENT"."DODAJPRODUKT" (
+  model in varchar2,
+  id_producenta in number,
+  id_rodzaju in number,
+  rok in varchar2,
+  cena in number,
+  img in varchar2)
+  IS
+  BEGIN
+    INSERT INTO produkt VALUES (
+   producenci_seq.nextval, model, id_producenta, id_rodzaju, rok, cena, img);
+  END dodajprodukt;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure DODAJRODZAJ
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "STUDENT"."DODAJRODZAJ" (
+  nazwaRodzaju in varchar2)
+  IS
+  BEGIN
+    INSERT INTO rodzaje VALUES (
+   rodzaje_seq.nextval, nazwaRodzaju);
+  END dodajrodzaj;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure LOGUJ
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "STUDENT"."LOGUJ" (username_IN IN VARCHAR2, pasword_IN IN VARCHAR2, id_OUT OUT SYS_REFCURSOR) AS
+BEGIN
+  OPEN id_OUT FOR
+  SELECT id_klienta FROM klienci WHERE nazwa_uzytkownika = username_IN AND haslo = pasword_IN;
+  end;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure REJESTRUJ
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "STUDENT"."REJESTRUJ" (
+  nazwa_uzytkownika in varchar2,
+  haslo in varchar2,
+  imie in varchar2,
+  nazwisko in varchar2,
+  email in varchar2,
+  adres in varchar2)
+  IS
+  BEGIN
+    INSERT INTO klienci VALUES (
+   klienci_seq.nextval, imie, nazwisko, adres, nazwa_uzytkownika, haslo, email);
+  END rejestruj;
+
+/
