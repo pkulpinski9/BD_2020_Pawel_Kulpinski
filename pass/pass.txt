@@ -1,0 +1,4 @@
+Konto Administratora:
+
+nazwa użytkownika: admin
+hasło: admin
