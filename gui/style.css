@@ -1,0 +1,136 @@
+		/*
+		#e7e7e7 szary
+		#2378ba niebieski
+		#256291 niebiski ciemny
+		*/
+		
+		.navbar {
+		    margin-bottom: 0;
+		    background-color: #2378ba;
+			z-index: 9999;
+			padding-right: 0.5rem;
+			width: 100%;
+			overflow: hidden;
+		    /* border: 0; */
+		    /* font-size: 12px !important;
+		    line-height: 1.42857143 !important; */
+		    letter-spacing: 4px;
+		    /* border-radius: 0; */
+		}
+		
+		.navbar li a,
+		.navbar {
+		    color: #fff !important;
+		    font-weight: bold;
+		}
+		
+		.navbar-nav li a:hover,
+		.navbar-nav li.active a {
+		    color: #2378ba!important;
+		    background-color: #fff !important;
+		}
+		
+		.navbar-default .navbar-toggle {
+		    border-color: transparent;
+		    color: #fff !important;
+		}
+		
+		.navbar-brand {
+		    padding: 5px;
+		}
+		
+		.jumbotron {
+		    color: #fff;
+		    padding: 100px 25px;
+		    background-color: #2378ba;
+			margin-bottom: 0;
+			border-radius: 0px;
+			
+		}
+		.jumbotron2 {
+		    color: #ffffff;
+		    padding: 50px 25px;
+		    background-color: #256291;
+			margin-bottom: 0;
+			border-radius: 0px;
+			
+		}
+		
+		.imgcontainer {
+		    text-align: center;
+		    margin: 0 0 0px 0;
+		    position: relative;
+		}
+		
+		.btn1 {
+		    background-color: #000000;
+		    color: white;
+		}
+		
+		.productinfo {
+		    color: white;
+            background-color: #2378ba;
+            border: 3px solid #fff;
+		    border-radius: 40px;
+		    padding: 40px;
+		    margin: 5px;
+		    padding: 20px;
+			display: inline-block;
+			overflow: hidden;
+		}
+		
+		.add-to-cart {
+		    background-color: #fff;
+		    color: #000;
+		}
+		.list-group-item {
+			color: #000000;
+			font-size: 20px;
+		}
+		.error{
+			color: #000000;
+			margin: auto;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 18px;
+		}
+		@media (max-width: 792px){
+			.nav-item{
+				
+				font-size: 12px;
+			}
+		}
+		.dwa {
+		    color: #000000;
+		    padding: 100px 25px;
+		    background-color: #256291;
+			margin-bottom: 0;
+			border-radius: 0px;
+			min-height: 86vh;
+			
+		}
+		.cart{
+			background-color: #256291;
+			color: #ffffff;
+		}
+		.podsumowanie{
+			background-color: #2378ba;
+		}
+		
+		/*
+		.panel {
+			border: 1px solid #2378ba;
+			border-radius:0;
+			transition: box-shadow 0.5s;
+			}
+			.panel:hover {
+			box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+			}
+		
+		*/
+		
+
+		
+		
+		
+		
+		
